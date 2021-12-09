@@ -156,7 +156,7 @@ class HttpClient {
       const http_response_t &aResponse,
       const http_header_t headers[],
       const char* aHttpMethod,
-      IChunkStream* stream);
+      const IChunkStream* stream);
 
   void sendHeader(
       const char* aHeaderName,
