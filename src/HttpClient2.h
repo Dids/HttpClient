@@ -1,5 +1,5 @@
-#ifndef __HTTP_CLIENT_H_  //NOLINT
-#define __HTTP_CLIENT_H_
+#ifndef __HTTP_CLIENT_2_H_  //NOLINT
+#define __HTTP_CLIENT_2_H_
 
 #ifndef HTTP_CLIENT_BUFFER_SIZE
 #define HTTP_CLIENT_BUFFER_SIZE 1024
@@ -57,7 +57,7 @@ typedef struct {
   String body;
 } http_response_t;
 
-class HttpClient {
+class HttpClient2 {
  public:
   /**
   * Public references to variables.
@@ -68,7 +68,7 @@ class HttpClient {
   /**
   * Constructor.
   */
-  HttpClient(void);
+  HttpClient2(void);
 
   /**
   * HTTP request methods.
@@ -170,4 +170,4 @@ class HttpClient {
       const char* aHeaderName);
 };
 
-#endif /* __HTTP_CLIENT_H_ */  //NOLINT
+#endif /* __HTTP_CLIENT_2_H_ */  //NOLINT
