@@ -2,6 +2,10 @@
 #include <string.h>
 #include "IChunkStream.h"
 
+#ifdef LOGGING
+#undef LOGGING
+#endif
+
 static const uint16_t DEFAULT_TIMEOUT = 5000;  // Allow maximum 5s between data packets.
 
 
@@ -59,9 +63,9 @@ void HttpClient::sendHeader(const char* aHeaderName) {
 * struct.
 */
 void HttpClient::request(
-    http_request_t &aRequest,
+    const http_request_t &aRequest,
     http_response_t &aResponse,
-    http_header_t headers[],
+    const http_header_t headers[],
     const char* aHttpMethod) {
   // If a proper response code isn't received it will be set to -1.
   aResponse.status = -1;
@@ -183,8 +187,10 @@ void HttpClient::request(
   // timeout or an error.
 
   unsigned int bufferPosition = 0;
-  unsigned uint16_t lastRead = millis();
-  unsigned uint16_t firstRead = millis();
+  uint16_t lastRead = millis();
+#ifdef LOGGING 
+  uint16_t firstRead = millis();
+#endif
   bool error = false;
   bool timeout = false;
   uint16_t actualTimeout = aRequest.timeout == 0 ? DEFAULT_TIMEOUT : aRequest.timeout;
@@ -305,10 +311,10 @@ void HttpClient::request(
 */
 void HttpClient::request(
     const http_request_t &aRequest,
-    const http_response_t &aResponse,
+    http_response_t &aResponse,
     const http_header_t headers[],
     const char* aHttpMethod,
-    const IChunkStream* stream) {
+    IChunkStream* stream) {
   // If a proper response code isn't received it will be set to -1.
   aResponse.status = -1;
 
@@ -422,8 +428,10 @@ void HttpClient::request(
   // The loop exits when the connection is closed, or if there is a
   // timeout or an error.
   unsigned int bufferPosition = 0;
-  unsigned uint16_t lastRead = millis();
-  unsigned uint16_t firstRead = millis();
+  uint16_t lastRead = millis();
+#ifdef LOGGING
+  uint16_t firstRead = millis();
+#endif
   bool error = false;
   bool timeout = false;
   uint16_t actualTimeout = aRequest.timeout == 0 ? DEFAULT_TIMEOUT : aRequest.timeout;

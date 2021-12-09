@@ -76,67 +76,67 @@ class HttpClient {
   */
   void get(
       const http_request_t &aRequest,
-      const http_response_t &aResponse) {
+      http_response_t &aResponse) {
     request(aRequest, aResponse, reinterpret_cast<http_header_t*>(NULL), HTTP_METHOD_GET);
   }
 
   void post(
       const http_request_t &aRequest,
-      const http_response_t &aResponse) {
+      http_response_t &aResponse) {
     request(aRequest, aResponse, reinterpret_cast<http_header_t*>(NULL), HTTP_METHOD_POST);
   }
 
   void put(
       const http_request_t &aRequest,
-      const http_response_t &aResponse) {
+      http_response_t &aResponse) {
     request(aRequest, aResponse, reinterpret_cast<http_header_t*>(NULL), HTTP_METHOD_PUT);
   }
 
   void del(
       const http_request_t &aRequest,
-      const http_response_t &aResponse) {
+      http_response_t &aResponse) {
     request(aRequest, aResponse, reinterpret_cast<http_header_t*>(NULL), HTTP_METHOD_DELETE);
   }
 
   void get(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[]) {
     request(aRequest, aResponse, headers, HTTP_METHOD_GET);
   }
 
   void post(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[]) {
     request(aRequest, aResponse, headers, HTTP_METHOD_POST);
   }
 
   void post(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[],
-      const IChunkStream* stream) {
+      IChunkStream* stream) {
     request(aRequest, aResponse, headers, HTTP_METHOD_POST, stream);
   }
 
   void put(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[]) {
     request(aRequest, aResponse, headers, HTTP_METHOD_PUT);
   }
 
   void del(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[]) {
     request(aRequest, aResponse, headers, HTTP_METHOD_DELETE);
   }
 
   void patch(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[]) {
     request(aRequest, aResponse, headers, HTTP_METHOD_PATCH);
   }
@@ -147,16 +147,16 @@ class HttpClient {
   */
   void request(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[],
       const char* aHttpMethod);
 
   void request(
       const http_request_t &aRequest,
-      const http_response_t &aResponse,
+      http_response_t &aResponse,
       const http_header_t headers[],
       const char* aHttpMethod,
-      const IChunkStream* stream);
+      IChunkStream* stream);
 
   void sendHeader(
       const char* aHeaderName,
